@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seldogan <seldogan@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: nursimadogan <nursimadogan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 19:42:06 by seldogan          #+#    #+#             */
-/*   Updated: 2026/07/07 20:36:54 by seldogan         ###   ########.fr       */
+/*   Updated: 2026/07/08 01:00:51 by nursimadoga      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,42 +17,47 @@ int	ft_atoi(char *str)
 
 	int i;
 	i = 0;
-
-	int flag;
-	flag = 0;
 	
-	int sign;
-	int result;
+	int flag = 1;
+	int sign = 1;
+	int result = 0;
 
-	while( flag && !(str[i] == 45 || str[i] == 43 ||
+	while(flag && !(str[i] == 45 || str[i] == 43 ||
 		(str[i] >= '0' && str [i] <='9')))
 	{	
-		i++;
 		if(str[i] == '\0')
 		{
-			flag = 0;	
+			flag = 0;;	
 		}
+		i++;
 	}
 
-	flag = 0;
+    if (str[i] == 45 || str[i] == 43)
+    {
+        if (str[i] == 45)
+        {
+            sign *= -1;
+        }
+        i++;
+    }
 
-	while(!flag)
-	{
-		if(str[i] == 45)
-		{
-		 *= -1;
-		}
+    while (str[i] >= '0' && str[i] <= '9')
+    {
+        result = result * 10 + (str[i] - '0');
+        i++;
+    }
+    
+    return (result * sign);
+}
 
-		sign = str[i];
-		
-		while(str[i] >= '0' && str [i] <='9')
-		{
-			i++;
-		}
-		
-	}
+int main()
+{
+
+	char array[] = "--45abc";
+
+	int deneme = ft_atoi(array);
 	
+	printf("%d", deneme);
 
-
-	
+	return(0);
 }
