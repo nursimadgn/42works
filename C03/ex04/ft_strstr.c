@@ -34,8 +34,8 @@ int main()
 {
 
 
-	char array1[] = "hello worldw";
-	char tofind[] = "w";
+	char array1[] = "hello world";
+	char tofind[] = "wo";
 	
 	char *ptr = ft_strstr(array1, tofind);
 

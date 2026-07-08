@@ -48,7 +48,7 @@ int main(void)
 
     int deneme = ft_strlcat(array1, array2, 15);
 
-    printf("%s", array1);
+    printf("%d", deneme);
 
     return (0);
 }
