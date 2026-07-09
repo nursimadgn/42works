@@ -1,52 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seldogan <seldogan@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/07 19:42:06 by seldogan          #+#    #+#             */
-/*   Updated: 2026/07/09 18:18:53 by seldogan         ###   ########.fr       */
+/*   Created: 2026/07/07 17:10:56 by seldogan          #+#    #+#             */
+/*   Updated: 2026/07/07 17:15:46 by seldogan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int	ft_atoi(char *str)
+/* mynot: to_find boş iise str döndür, to_find içinde geçmiyorsa null dönmeli*/
+
+char	*ft_strstr(char *str, char *to_find)
 {
-	
-	int i;
+	int	i;
+	int	j;
+
 	i = 0;
-	
-	int sign = 1;
-	int result = 0;
-
-	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
-		++i;
-
-	while((str[i] == 45) || (str[i] == 43))
+	if (to_find[i] == '\0')
 	{
-		sign  *=  (44 - str[i]);		
-		i++;	
+		return (str);
 	}
-
-	while(str[i] >= '0' && str[i] <='9')
+	while (str[i])
 	{
-		result = result * 10 + (str[i] - '0');
+		j = 0;
+		while (str[i] && str[i + j] == to_find[j])
+		{
+			j++;
+			if (to_find[j] == '\0')
+			{
+				return (str + i);
+			}
+		}
 		i++;
 	}
-	return(sign*result);
-		
-}
-
-int main()
-{
-
-	char array1[] = " ---56ab";
-	
-	int sayi = ft_atoi(array1);
-
-	printf("%d", sayi);
-
-	return(0);
+	return (0);
 }

@@ -1,52 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seldogan <seldogan@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/07 19:42:06 by seldogan          #+#    #+#             */
-/*   Updated: 2026/07/09 18:18:53 by seldogan         ###   ########.fr       */
+/*   Created: 2026/07/07 17:10:38 by seldogan          #+#    #+#             */
+/*   Updated: 2026/07/07 17:10:39 by seldogan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int	ft_atoi(char *str)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	
-	int i;
+	unsigned int	i;
+
 	i = 0;
-	
-	int sign = 1;
-	int result = 0;
-
-	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
-		++i;
-
-	while((str[i] == 45) || (str[i] == 43))
+	if (n == 0)
 	{
-		sign  *=  (44 - str[i]);		
-		i++;	
+		return (0);
 	}
-
-	while(str[i] >= '0' && str[i] <='9')
+	while (s1[i] != '\0' && s2[i] != '\0' && i < n - 1)
 	{
-		result = result * 10 + (str[i] - '0');
-		i++;
+		if (s1[i] == s2[i])
+		{
+			i++;
+		}
+		else
+		{
+			return (s1[i] - s2[i]);
+		}
 	}
-	return(sign*result);
-		
+	return (s1[i] - s2[i]);
 }
 
-int main()
+int	main(void)
 {
+	char	array1[] = "a";
+	char	*ptr;
+	int		deneme;
 
-	char array1[] = " ---56ab";
-	
-	int sayi = ft_atoi(array1);
-
-	printf("%d", sayi);
-
-	return(0);
+	ptr = "c";
+	deneme = ft_strncmp(array1, ptr, 1);
+	printf("%d", deneme);
+	return (0);
 }

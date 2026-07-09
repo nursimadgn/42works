@@ -1,52 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seldogan <seldogan@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/07 19:42:06 by seldogan          #+#    #+#             */
-/*   Updated: 2026/07/09 18:18:53 by seldogan         ###   ########.fr       */
+/*   Created: 2026/07/07 17:10:31 by seldogan          #+#    #+#             */
+/*   Updated: 2026/07/07 17:10:32 by seldogan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int	ft_atoi(char *str)
+int	ft_strcmp(char *s1, char *s2)
 {
-	
-	int i;
+	int	i;
+
 	i = 0;
-	
-	int sign = 1;
-	int result = 0;
-
-	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
-		++i;
-
-	while((str[i] == 45) || (str[i] == 43))
+	while (s1[i] != '\0' && s2[i] != '\0')
 	{
-		sign  *=  (44 - str[i]);		
-		i++;	
+		if (s1[i] == s2[i])
+		{
+			i++;
+		}
+		else
+		{
+			return (s1[i] - s2[i]);
+		}
 	}
-
-	while(str[i] >= '0' && str[i] <='9')
-	{
-		result = result * 10 + (str[i] - '0');
-		i++;
-	}
-	return(sign*result);
-		
+	return (s1[i] - s2[i]);
 }
 
-int main()
+int	main(void)
 {
+	char array1[] = "af";
+	char array2[] = "a";
 
-	char array1[] = " ---56ab";
-	
-	int sayi = ft_atoi(array1);
+	int deneme = ft_strcmp(array1, array2);
 
-	printf("%d", sayi);
+	printf("%d", deneme);
 
-	return(0);
+	return (0);
 }
