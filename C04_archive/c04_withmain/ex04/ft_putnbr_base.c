@@ -6,11 +6,10 @@
 /*   By: seldogan <seldogan@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 14:54:40 by seldogan          #+#    #+#             */
-/*   Updated: 2026/07/09 17:57:23 by seldogan         ###   ########.fr       */
+/*   Updated: 2026/07/11 15:26:03 by seldogan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <unistd.h>
 
 long int	ft_strlen(char *str)
@@ -85,10 +84,4 @@ void	ft_putnbr_base(int nbr, char *base)
 		ft_putnbr_base(long_nbr / base_len, base);
 		ft_putnbr_base(long_nbr % base_len, base);
 	}
-}
-
-int	main(void)
-{
-	ft_putnbr_base(25, "012");
-	return (0);
 }

@@ -6,47 +6,30 @@
 /*   By: seldogan <seldogan@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 19:42:06 by seldogan          #+#    #+#             */
-/*   Updated: 2026/07/09 18:18:53 by seldogan         ###   ########.fr       */
+/*   Updated: 2026/07/11 16:26:31 by seldogan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
 int	ft_atoi(char *str)
 {
-	
-	int i;
+	int	i;
+	int	sign;
+	int	result;
+
 	i = 0;
-	
-	int sign = 1;
-	int result = 0;
-
+	sign = 1;
+	result = 0;
 	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
-		++i;
-
-	while((str[i] == 45) || (str[i] == 43))
+		i++;
+	while ((str[i] == 45) || (str[i] == 43))
 	{
-		sign  *=  (44 - str[i]);		
-		i++;	
+		sign *= (44 - str[i]);
+		i++;
 	}
-
-	while(str[i] >= '0' && str[i] <='9')
+	while (str[i] >= '0' && str[i] <= '9')
 	{
 		result = result * 10 + (str[i] - '0');
 		i++;
 	}
-	return(sign*result);
-		
-}
-
-int main()
-{
-
-	char array1[] = " ---56ab";
-	
-	int sayi = ft_atoi(array1);
-
-	printf("%d", sayi);
-
-	return(0);
+	return (sign * result);
 }
